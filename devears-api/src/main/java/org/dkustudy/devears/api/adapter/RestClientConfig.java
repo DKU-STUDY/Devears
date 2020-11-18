@@ -1,6 +1,5 @@
 package org.dkustudy.devears.api.adapter;
 
-import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.dkustudy.devears.api.adapter.github.GithubPath;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +15,7 @@ public class RestClientConfig {
     public static final int MAX_CONNECT = 100;
     public static final int MAX_CONNECT_PER_ROUTE = 100;
 
-    @Bean("githubClient")
+    @Bean
     public RestTemplate githubClient() {
         RestTemplate restTemplate = new RestTemplate(httpComponentsClientHttpRequestFactory());
         restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(GithubPath.DOMAIN_URL));

@@ -12,10 +12,9 @@ public class GithubAdapter {
 
     private final RestTemplate githubClient;
 
-    public String getAuth() {
-        Map<String, String> map = githubClient.getForObject("/", Map.class);
-        System.out.println(map);
-        return "test";
+    public Map getAuth() {
+        System.out.println(githubClient);
+        return githubClient.getForObject("/", Map.class);
     }
 
 }
