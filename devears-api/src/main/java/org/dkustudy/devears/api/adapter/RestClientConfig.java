@@ -15,7 +15,6 @@ public class RestClientConfig {
     public static final int MAX_CONNECT = 100;
     public static final int MAX_CONNECT_PER_ROUTE = 100;
 
-    @Bean
     public RestTemplate githubClient() {
         RestTemplate restTemplate = new RestTemplate(httpComponentsClientHttpRequestFactory());
         restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(GithubPath.DOMAIN_URL));
