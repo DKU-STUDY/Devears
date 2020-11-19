@@ -3,25 +3,35 @@ package org.dkustudy.devears.api.endpoint.github.controller;
 import lombok.RequiredArgsConstructor;
 import org.dkustudy.devears.api.adapter.github.GithubAdapter;
 import org.dkustudy.devears.api.endpoint.constant.ApiPath;
+import org.dkustudy.devears.api.property.GithubProperty;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(ApiPath.Github.ROOT)
 public class GithubController {
 
     private final GithubAdapter githubAdapter;
+    private final GithubProperty githubProperty;
 
-    @GetMapping(ApiPath.Github.AUTH)
-    public String getAuth() {
-        return "auth";
+    @GetMapping(ApiPath.Github.LOGIN)
+    public void getAuth(HttpServletResponse response) throws IOException {
+        response.sendRedirect(
+            UriComponentsBuilder
+                .fromHttpUrl("https://github.com/login/oauth/authorize")
+                .queryParam("scope", githubProperty.getScope())
+                .queryParam("client_id", githubProperty.getClientId())
+                .build()
+                .toString()
+        );
     }
 
-    @GetMapping(ApiPath.Github.AUTH_CALLBACK)
+    @GetMapping(ApiPath.Github.LOGIN_CALLBACK)
     public String initAuth() {
         return "callback";
     }

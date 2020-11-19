@@ -1,7 +1,7 @@
 package org.dkustudy.devears.api.adapter;
 
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.dkustudy.devears.api.adapter.github.GithubPath;
+import org.dkustudy.devears.api.adapter.github.path.GithubApiPath;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -18,7 +18,7 @@ public class RestClientConfig {
     @Bean("githubClient")
     public RestTemplate githubClient() {
         RestTemplate restTemplate = new RestTemplate(httpComponentsClientHttpRequestFactory());
-        restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(GithubPath.DOMAIN_URL));
+        restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(GithubApiPath.DOMAIN_URL));
         return restTemplate;
     }
 
