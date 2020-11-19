@@ -4,6 +4,9 @@ server:
       enabled: true
       path: /h2-console
 
+github:
+  scope: repo
+  client-id: ff9faee8767641f7d7e1
 
 spring:
   profiles:
