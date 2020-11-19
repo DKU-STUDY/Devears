@@ -22,6 +22,13 @@ public class RestClientConfig {
         return restTemplate;
     }
 
+    @Bean("githubApiClient")
+    public RestTemplate githubApiClient() {
+        RestTemplate restTemplate = new RestTemplate(httpComponentsClientHttpRequestFactory());
+        restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(GithubApiPath.API_URL));
+        return restTemplate;
+    }
+
     private HttpComponentsClientHttpRequestFactory httpComponentsClientHttpRequestFactory () {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
         factory.setReadTimeout(READ_TIMEOUT);

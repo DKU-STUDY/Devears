@@ -2,10 +2,13 @@ package org.dkustudy.devears.api.endpoint.github.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.dkustudy.devears.api.adapter.github.GithubAdapter;
+import org.dkustudy.devears.api.adapter.github.request.GithubAccessTokenRequest;
+import org.dkustudy.devears.api.adapter.github.response.GithubAccessTokenResponse;
 import org.dkustudy.devears.api.endpoint.constant.ApiPath;
 import org.dkustudy.devears.api.property.GithubProperty;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -32,9 +35,14 @@ public class GithubController {
     }
 
     @GetMapping(ApiPath.Github.LOGIN_CALLBACK)
-    public String initAuth() {
-
-        return githubProperty.getClientSecret();
+    public GithubAccessTokenResponse initAuth(@RequestParam String code) {
+        return githubAdapter.getAccessToken(
+            GithubAccessTokenRequest.builder()
+                .code(code)
+                .client_id(githubProperty.getClientId())
+                .client_secret(githubProperty.getClientSecret())
+                .build()
+        );
     }
 
 }
