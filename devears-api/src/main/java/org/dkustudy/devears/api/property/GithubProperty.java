@@ -12,4 +12,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class GithubProperty {
     private String scope;
     private String clientId;
+    private String clientSecret;
 }

@@ -33,7 +33,8 @@ public class GithubController {
 
     @GetMapping(ApiPath.Github.LOGIN_CALLBACK)
     public String initAuth() {
-        return "callback";
+
+        return githubProperty.getClientSecret();
     }
 
 }
