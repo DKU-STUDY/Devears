@@ -1,6 +1,6 @@
 package org.dkustudy.devears.api.endpoint.constant;
 
-public class ApiPath {
+public class Path {
 
     public static final String API = "/api";
 
@@ -12,7 +12,7 @@ public class ApiPath {
 
     }
 
-    public static class User {
+    public static class UserApi {
 
         public static final String USER = API + "/user";
 

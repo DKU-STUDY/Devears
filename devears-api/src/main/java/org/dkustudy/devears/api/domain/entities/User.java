@@ -6,39 +6,43 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-@Builder
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class User extends AbstractEntity {
 
     @Column(unique = true)
-    private String githubId; //: "JunilHwang",
+    private String githubId;
+
+    @Column(unique = true)
+    private String accessToken;
 
     @Column
-    private String profileUrl; //: "https://avatars3.githubusercontent.com/u/18749057?v=4",
+    private String profileUrl;
 
     @Column
-    private String name; //: "JunilHwang",
+    private String name;
 
     @Column
-    private String company; //: "DKU-STUDY",
+    private String company;
 
     @Column
-    private String blog; //: "https://junilhwang.github.io/TIL/",
+    private String blog;
 
     @Column
-    private String email; //: "junil.h@kakao.com",
+    private String email;
 
     @Column
-    private String description; //: "FullStack Developer /\r\n@zuminternet /\r\n@DKU-STUDY /\r\n@next-step reviwer",
+    private String description;
 
     @Column
-    private long followers; //: 135,
+    private long followers;
 
     @Column
-    private long following; //: 183,
+    private long following;
 
 
 }
