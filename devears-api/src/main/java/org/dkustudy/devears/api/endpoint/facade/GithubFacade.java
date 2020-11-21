@@ -21,10 +21,13 @@ public class GithubFacade {
     }
 
     public void authorization(String code) {
-        Cookie cookie = new Cookie("accessToken", githubAuthService.getAccessToken(code));
+        String accessToken = githubAuthService.getAccessToken(code);
+        Cookie cookie = new Cookie("accessToken", accessToken);
         cookie.setMaxAge(ACCESS_TOKEN_EXPIRATION);
         cookie.setPath("/");
         addCookie(cookie);
+
+
     }
 
     private static void addCookie(Cookie cookie) {
