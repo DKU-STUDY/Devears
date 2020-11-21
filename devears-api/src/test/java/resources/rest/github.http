@@ -1,3 +1,6 @@
-### get User
+### AccessToken으로 Github User 조회
 GET https://api.github.com/user
 Authorization: Token 7fd2dba75413987f7a2344d3aab6a6f4922b6f56
+
+###
+

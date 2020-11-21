@@ -1,0 +1,12 @@
+### User 정보 조회 (성공)
+GET http://localhost:8080/api/user
+Cookie: accessToken=1296ba5e71f6eecf5cc29f8a2c30b6b6a386ff6b
+
+### User 정보 조회 (실패)
+GET http://localhost:8080/api/user
+Cookie: accessToken=
+
+### 로그아웃
+GET http://localhost:8080/api/user/logout
+
+###
