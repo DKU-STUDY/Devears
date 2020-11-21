@@ -1,6 +1,8 @@
 package org.dkustudy.devears.api.endpoint.facade;
 
 import lombok.RequiredArgsConstructor;
+import org.dkustudy.devears.api.adapter.github.response.GithubUserResponse;
+import org.dkustudy.devears.api.endpoint.response.GithubUser;
 import org.dkustudy.devears.api.endpoint.service.GithubAuthService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -20,14 +22,14 @@ public class GithubFacade {
         return githubAuthService.getLoginURL();
     }
 
-    public void authorization(String code) {
+    public GithubUser authorization(String code) {
         String accessToken = githubAuthService.getAccessToken(code);
         Cookie cookie = new Cookie("accessToken", accessToken);
         cookie.setMaxAge(ACCESS_TOKEN_EXPIRATION);
         cookie.setPath("/");
         addCookie(cookie);
 
-
+        return githubAuthService.getUser(accessToken);
     }
 
     private static void addCookie(Cookie cookie) {

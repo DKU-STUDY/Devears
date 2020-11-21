@@ -28,9 +28,9 @@ public class GithubAdapter {
             );
     }
 
-    public GithubUserResponse getUser(String token) {
+    public GithubUserResponse getUser(String accessToken) {
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", String.format("token %s", token));
+        headers.set("Authorization", String.format("token %s", accessToken));
         return githubApiClient
                 .exchange(
                     GithubApiPath.USER,
