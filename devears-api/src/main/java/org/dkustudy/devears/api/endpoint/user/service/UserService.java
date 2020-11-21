@@ -31,7 +31,9 @@ public class UserService {
     }
 
     public UserResponse getUserByToken(String token) {
-        return UserResponse.of(userRepository.findByAccessToken(token));
+        User user = userRepository.findByAccessToken(token);
+        if (user == null) return null;
+        return UserResponse.of(user);
     }
 
 }
