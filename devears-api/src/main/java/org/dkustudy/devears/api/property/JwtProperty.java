@@ -9,6 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @Setter
 @NoArgsConstructor
-public class JWTProperty {
+public class JwtProperty {
     private String secret;
 }

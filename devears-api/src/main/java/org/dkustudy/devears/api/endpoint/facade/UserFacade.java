@@ -13,8 +13,8 @@ public class UserFacade {
     private final UserService userService;
     private final AccessTokenManager accessTokenManager;
 
-    public UserResponse getUserByToken(String token) {
-        return userService.getUserByToken(token);
+    public UserResponse getUserByToken(String jwt) {
+        return userService.getUserByToken(accessTokenManager.getAccessTokenByJwt(jwt));
     }
 
     public void logout() {
