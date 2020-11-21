@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.dkustudy.devears.api.adapter.github.path.GithubApiPath;
 import org.dkustudy.devears.api.adapter.github.request.GithubAccessTokenRequest;
 import org.dkustudy.devears.api.adapter.github.response.GithubAccessTokenResponse;
+import org.dkustudy.devears.api.adapter.github.response.GithubUserResponse;
 import org.dkustudy.devears.api.property.GithubProperty;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,7 +20,6 @@ public class GithubAdapter {
     private final RestTemplate githubApiClient;
 
     public GithubAccessTokenResponse getAccessToken(GithubAccessTokenRequest request) {
-
         return githubClient
             .postForObject(
                 GithubApiPath.OAUTH_PATH,
@@ -28,5 +27,18 @@ public class GithubAdapter {
                 GithubAccessTokenResponse.class
             );
     }
+
+    public GithubUserResponse getUser(String token) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", String.format("token %s", token));
+        return githubApiClient
+                .exchange(
+                    GithubApiPath.USER,
+                    HttpMethod.GET,
+                    new HttpEntity<String>(headers),
+                    GithubUserResponse.class
+                ).getBody();
+    }
+
 
 }
