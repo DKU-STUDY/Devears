@@ -15,6 +15,7 @@ public class Path {
     public static class UserApi {
 
         public static final String USER = API + "/user";
+        public static final String LOGOUT = USER + "/logout";
 
     }
 
