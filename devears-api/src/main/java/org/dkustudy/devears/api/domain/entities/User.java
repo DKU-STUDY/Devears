@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -51,16 +52,16 @@ public class User extends AbstractEntity {
         return this.role.getKey();
     }
 
-    public void updateBy(GithubUserResponse response) {
-        githubId = response.getLogin();
-        profileUrl = response.getAvatar_url();
-        name = response.getName();
-        company = response.getCompany();
-        blog = response.getBlog();
-        email = response.getEmail();
-        description = response.getBio();
-        followers = response.getFollowers();
-        following = response.getFollowing();
+    public void updateBy(Map<String, Object> params) {
+        githubId = (String) params.get("login");
+        profileUrl = (String) params.get("avatar_url");
+        name = (String) params.get("name");
+        company = (String) params.get("company");
+        blog = (String) params.get("blog");
+        email = (String) params.get("email");
+        description = (String) params.get("bio");
+        followers = (Long) params.get("followers");
+        following = (Long) params.get("following");
     }
 
     @Getter
