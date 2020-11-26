@@ -17,16 +17,7 @@ public class UserService {
         User user = userRepository
             .findByGithubIdAndActivation(response.getLogin(), true)
             .orElse(new User());
-        user.setAccessToken(accessToken);
-        user.setGithubId(response.getLogin());
-        user.setProfileUrl(response.getAvatar_url());
-        user.setName(response.getName());
-        user.setCompany(response.getCompany());
-        user.setBlog(response.getBlog());
-        user.setEmail(response.getEmail());
-        user.setDescription(response.getBio());
-        user.setFollowers(response.getFollowers());
-        user.setFollowing(response.getFollowing());
+        user.updateBy(response);
         userRepository.save(user);
     }
 
