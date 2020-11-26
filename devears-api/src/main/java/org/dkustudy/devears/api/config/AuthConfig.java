@@ -2,7 +2,7 @@ package org.dkustudy.devears.api.config;
 
 import lombok.RequiredArgsConstructor;
 import org.dkustudy.devears.api.domain.entities.User;
-import org.dkustudy.devears.api.endpoint.user.service.CustomOAuth2UserService;
+import org.dkustudy.devears.api.endpoint.user.service.UserOAuth2Service;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class AuthConfig extends WebSecurityConfigurerAdapter {
 
-    private final CustomOAuth2UserService customOAuth2UserService;
+    private final UserOAuth2Service userOAuth2Service;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -32,6 +32,6 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .oauth2Login()
                     .userInfoEndpoint()
-                        .userService(customOAuth2UserService);
+                        .userService(userOAuth2Service);
     }
 }

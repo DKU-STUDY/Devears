@@ -18,7 +18,8 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
+public class UserOAuth2Service implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
+    private static final String SESSION_KEY = "user";
 
     private final UserRepository userRepository;
     private final HttpSession httpSession;
@@ -27,7 +28,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 
         User user = saveByGithubUser(userRequest.getAdditionalParameters());
-        httpSession.setAttribute("user", UserResponse.of(user));
+        httpSession.setAttribute(SESSION_KEY, UserResponse.of(user));
 
         return new DefaultOAuth2User(
             Collections.singleton(
@@ -47,5 +48,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
             .orElse(new User());
         user.updateBy(params);
         return userRepository.save(user);
+    }
+
+    public UserResponse getUserBySession() {
+        return (UserResponse) httpSession.getAttribute(SESSION_KEY);
     }
 }
