@@ -60,8 +60,9 @@ public class User extends AbstractEntity {
         blog = (String) params.get("blog");
         email = (String) params.get("email");
         description = (String) params.get("bio");
-        followers = (Long) params.get("followers");
-        following = (Long) params.get("following");
+        followers = (Integer) params.get("followers");
+        following = (Integer) params.get("following");
+        role = Role.USER;
     }
 
     @Getter

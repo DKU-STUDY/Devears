@@ -5,6 +5,7 @@ import org.dkustudy.devears.api.domain.entities.User;
 import org.dkustudy.devears.api.domain.repository.UserRepository;
 import org.dkustudy.devears.api.endpoint.user.data.response.UserResponse;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -26,15 +27,16 @@ public class UserOAuth2Service implements OAuth2UserService<OAuth2UserRequest, O
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+        OAuth2User oAuth2User = new DefaultOAuth2UserService().loadUser(userRequest);
 
-        User user = saveByGithubUser(userRequest.getAdditionalParameters());
+        User user = saveByGithubUser(oAuth2User.getAttributes());
         httpSession.setAttribute(SESSION_KEY, UserResponse.of(user));
 
         return new DefaultOAuth2User(
             Collections.singleton(
                 new SimpleGrantedAuthority(user.getRoleKey())
             ),
-            userRequest.getAdditionalParameters(),
+            oAuth2User.getAttributes(),
             userRequest.getClientRegistration()
                        .getProviderDetails()
                        .getUserInfoEndpoint()
@@ -47,6 +49,7 @@ public class UserOAuth2Service implements OAuth2UserService<OAuth2UserRequest, O
             .findByEmailAndActivation((String) params.get("email"), true)
             .orElse(new User());
         user.updateBy(params);
+        System.out.println(user);
         return userRepository.save(user);
     }
 
