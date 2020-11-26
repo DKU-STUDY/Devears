@@ -17,9 +17,9 @@ public class GithubFacade {
         return githubAuthService.getLoginURL();
     }
 
-    public void authorization(String code) {
+    public String authorization(String code) {
         String accessToken = githubAuthService.getAccessToken(code);
-        accessTokenManager.createAuth(accessToken);
         userService.saveByGithubUser(githubAuthService.getUser(accessToken), accessToken);
+        return accessTokenManager.getJwtByAccessToken(accessToken);
     }
 }

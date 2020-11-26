@@ -1,6 +1,7 @@
 package org.dkustudy.devears.api.endpoint.github.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.dkustudy.devears.api.endpoint.component.AccessTokenManager;
 import org.dkustudy.devears.api.endpoint.constant.Path;
 import org.dkustudy.devears.api.endpoint.facade.GithubFacade;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class GithubController {
 
     @GetMapping(Path.Github.LOGIN_CALLBACK)
     public void initAuth(@RequestParam String code, HttpServletResponse response) throws IOException {
-        githubFacade.authorization(code);
+        response.setHeader(AccessTokenManager.KEY, githubFacade.authorization(code));
         response.sendRedirect("/");
     }
 

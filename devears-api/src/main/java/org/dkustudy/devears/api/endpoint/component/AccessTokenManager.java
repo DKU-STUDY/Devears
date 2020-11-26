@@ -19,7 +19,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class AccessTokenManager {
     public static final int EXPIRATION = 60 * 60 * 24;
-    public static final String KEY = "authToken";
+    public static final String KEY = "X-AUTH-TOKEN";
 
     private final JwtProperty jwtProperty;
     private String secretKey;
@@ -30,15 +30,7 @@ public class AccessTokenManager {
                           .encodeToString(jwtProperty.getSecret().getBytes());
     }
 
-    public void createAuth(String accessToken) {
-        String jwt = getJwtByAccessToken(accessToken);
-        Cookie cookie = new Cookie(KEY, jwt);
-        cookie.setMaxAge(EXPIRATION);
-        cookie.setPath("/");
-        addCookie(cookie);
-    }
-
-    private String getJwtByAccessToken(String accessToken) {
+    public String getJwtByAccessToken(String accessToken) {
         Claims claims = Jwts.claims().setSubject(accessToken); // claim 생성
         Date now = new Date();
         return Jwts.builder()
@@ -47,13 +39,6 @@ public class AccessTokenManager {
             .setExpiration(new Date(now.getTime() + EXPIRATION * 1000)) // 유효 시간 지정
             .signWith(SignatureAlgorithm.HS256, secretKey) // 암호화 알고리즘, secret 값 지정
             .compact(); // 위의 내용을 압축 후 반환
-    }
-
-    public void removeToken() {
-        Cookie cookie = new Cookie(KEY, null);
-        cookie.setMaxAge(0);
-        cookie.setPath("/");
-        addCookie(cookie);
     }
 
     public String getAccessTokenByJwt(String jwt) {

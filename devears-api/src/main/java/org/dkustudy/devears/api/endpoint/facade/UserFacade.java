@@ -17,8 +17,4 @@ public class UserFacade {
         return userService.getUserByToken(accessTokenManager.getAccessTokenByJwt(jwt));
     }
 
-    public void logout() {
-        accessTokenManager.removeToken();
-    }
-
 }
