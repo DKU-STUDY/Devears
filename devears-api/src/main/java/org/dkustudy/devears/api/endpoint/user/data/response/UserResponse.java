@@ -2,10 +2,12 @@ package org.dkustudy.devears.api.endpoint.user.data.response;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 import org.dkustudy.devears.api.domain.entities.User;
 
 @Getter
 @Builder
+@ToString
 public class UserResponse {
     private final long idx;
     private final String id;

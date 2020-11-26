@@ -1,7 +1,6 @@
-package org.dkustudy.devears.api.config;
+package org.dkustudy.devears.api.config.auth;
 
 import lombok.RequiredArgsConstructor;
-import org.dkustudy.devears.api.domain.entities.User;
 import org.dkustudy.devears.api.endpoint.user.service.UserOAuth2Service;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -16,19 +15,23 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .headers().frameOptions().disable()
+            .csrf()
+                .disable()
+            .headers()
+                .frameOptions()
+                    .disable()
             .and()
                 .authorizeRequests()
                 .antMatchers("/", "/h2-console")
                     .permitAll()
-                .antMatchers("/api/user/**")
-                    .hasRole(User.Role.USER.name())
                 .anyRequest()
                     .permitAll()
             .and()
                 .logout()
+                    .addLogoutHandler(userOAuth2Service)
+                    .clearAuthentication(true)
                     .logoutSuccessUrl("/")
+                        .permitAll()
             .and()
                 .oauth2Login()
                     .userInfoEndpoint()
