@@ -1,0 +1,35 @@
+package org.dkustudy.devears.api.endpoint.user.service;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.dkustudy.devears.api.adapter.github.response.GithubUserResponse;
+import org.dkustudy.devears.api.domain.entities.User;
+import org.dkustudy.devears.api.domain.repository.UserRepository;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
+
+@Service
+@RequiredArgsConstructor
+public class CustomOAuth2UserService extends OAuth2UserService<OAuth2UserRequest, OAuth2User> {
+
+    private final UserRepository userRepository;
+
+    @Override
+    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+        return null;
+    }
+
+    public User saveByGithubUser(GithubUserResponse response) {
+        User user = userRepository
+            .findByEmailAndActivation(response.getEmail(), true)
+            .orElse(new User());
+        user.updateBy(response);
+        return userRepository.save(user);
+    }
+}
