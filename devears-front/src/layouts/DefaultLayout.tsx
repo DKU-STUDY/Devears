@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, RouteProps } from "react-router-dom";
+import Header from "./default/Header";
 
 interface IDefaultProps extends RouteProps {
   component: any
@@ -8,7 +9,10 @@ interface IDefaultProps extends RouteProps {
 const DefaultLayout: React.FC<IDefaultProps> = ({ component: Component, ...props }: IDefaultProps) => {
   return (
     <Route {...props} render={(matchProps) => (
-      <Component {...matchProps} />
+      <>
+        <Header />
+        <Component {...matchProps} />
+      </>
     )} />
   )
 }
