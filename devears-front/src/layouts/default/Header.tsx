@@ -7,7 +7,9 @@ const Header: React.FC = () => {
   return (
     <>
       <header id="site-header">
-        <Link to="/"><img src={logo} alt="devears" width="100"/></Link>
+        <div className="container">
+          <Link to="/"><img src={logo} alt="devears" height="50"/></Link>
+        </div>
       </header>
       <style jsx>{headerStyles}</style>
     </>
@@ -15,7 +17,10 @@ const Header: React.FC = () => {
 }
 
 const headerStyles = css`
-  header { border-bottom: 1px solid #ddd; background: #f5f5f5; }
+  header {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
 `;
 
 export default React.memo(Header);

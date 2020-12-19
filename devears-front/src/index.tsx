@@ -17,6 +17,11 @@ const globalStyles = css.global`
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   }
+  
+  .container {
+    width: 1200px;
+    margin: 0 auto;
+  }
 `;
 
 ReactDOM.render(
