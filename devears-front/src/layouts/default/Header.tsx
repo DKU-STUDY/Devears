@@ -11,7 +11,7 @@ const Header: React.FC = () => {
           <Link to="/"><img src={logo} alt="devears" height="50"/></Link>
           <nav>
             <ul>
-              <li><a href="#">Login</a></li>
+              <li><a href="#!">Login</a></li>
             </ul>
           </nav>
         </div>
