@@ -6,9 +6,13 @@ const Footer: React.FC = () => {
     <>
       <footer>
         <div className="container">
-          <p className="copyright">
-            Copyright &copy; 2021 Devears All Right Reserved.
-          </p>
+          <div className="">
+          </div>
+          <div>
+            <p className="copyright">
+              Copyright &copy; 2021 Devears All Right Reserved.
+            </p>
+          </div>
         </div>
       </footer>
       <style jsx>{footerStyles}</style>
