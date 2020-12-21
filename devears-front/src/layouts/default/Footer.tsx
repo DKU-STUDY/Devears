@@ -16,11 +16,11 @@ const Footer: React.FC = () => {
             <ul className="info">
               <li>
                 <PhoneFilled />
-                <span>+82-10-5764-4483</span>
+                <span className="info-value">+82-10-5764-4483</span>
               </li>
               <li>
                 <MailOutlined />
-                <span>junil.h@kakao.com</span>
+                <span className="info-value">junil.h@kakao.com</span>
               </li>
             </ul>
             <p className="copyright">
@@ -51,17 +51,42 @@ const footerStyles = css`
     font-size: 13px;
   }
   
-  .copyright {
-    color: #bbc0c4;
-    text-transform: uppercase;
+  ul {
+    
+    li + li {
+      margin-left: 7px;
+      padding-left: 8px;
+      position: relative;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 2px;
+        bottom: 2px;
+        width: 1px;
+        background: #777;
+      }
+    }
   }
-  
+
   .menu {
     display: flex;
   }
-  
+
   .info {
+    margin-top: 5px;
     display: flex;
+
+    &-value {
+      margin-left: 5px;
+    }
+  }
+
+  .copyright {
+    margin-top: 5px;
+    text-transform: uppercase;
   }
   
   .logo {
