@@ -1,9 +1,14 @@
-import React from "react";
+import React, {useCallback} from "react";
 import {Link} from "react-router-dom";
 import logo from "assets/image/logo.svg";
 import css from "styled-jsx/css";
+import {UserOutlined} from "@ant-design/icons";
 
 const Header: React.FC = () => {
+  const handleLogin = useCallback((e) => {
+    e.preventDefault();
+  }, []);
+
   return (
     <>
       <header id="site-header">
@@ -11,7 +16,11 @@ const Header: React.FC = () => {
           <Link to="/"><img src={logo} alt="devears" height="50"/></Link>
           <nav>
             <ul>
-              <li><a href="#!">Login</a></li>
+              <li>
+                <a href="#!" onClick={handleLogin}>
+                  로그인
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -38,7 +47,31 @@ const headerStyles = css`
   }
   
   nav {
-    
+   a {
+     position: relative;
+     display: block;
+     padding: 5px 0;
+     
+     &::before {
+       content: "";
+       position: absolute;
+       bottom: 0;
+       left: 50%;
+       right: 50%;
+       height: 2px;
+       background: #09F;
+       transition-property: left, right;
+       transition-duration: 0.3s;
+     }
+     
+     &:hover {
+       color: #09F;
+       &::before {
+         left: 0;
+         right: 0;
+       }
+     }
+   } 
   }
 `;
 
