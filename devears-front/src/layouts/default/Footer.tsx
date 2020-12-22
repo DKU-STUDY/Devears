@@ -73,6 +73,9 @@ const footerStyles = css`
 
   .menu {
     display: flex;
+    a:hover {
+      color: #fff;
+    }
   }
 
   .info {
