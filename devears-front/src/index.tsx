@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from "react-redux";
+import configureStore from "./data/configureStore";
+
+const { store, history } = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App/>
+    <Provider store={store}>
+      <App history={history} />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

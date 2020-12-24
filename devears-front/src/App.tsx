@@ -1,18 +1,24 @@
 import React from 'react';
-import { BrowserRouter, Switch } from "react-router-dom";
+import {Switch} from "react-router-dom";
+import {ConnectedRouter} from "connected-react-router";
 import css from 'styled-jsx/css';
+import {History} from "history";
 
 import DefaultLayout from "./layouts/DefaultLayout";
 import Main from "./views/Main";
 
-function App() {
+interface AppProps {
+  history: History
+}
+
+const App: React.FC<AppProps> = ({history}) => {
   return (
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <Switch>
-        <DefaultLayout exact path="/" component={Main} />
+        <DefaultLayout exact path="/" component={Main}/>
       </Switch>
       <style jsx global>{globalStyles}</style>
-    </BrowserRouter>
+    </ConnectedRouter>
   );
 }
 
@@ -47,7 +53,6 @@ const globalStyles = css.global`
     margin: 0 auto;
   }
 `;
-
 
 
 export default App;
