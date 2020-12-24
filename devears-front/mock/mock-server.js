@@ -9,13 +9,24 @@ mockServer.use(jsonServer.bodyParser);
 mockServer.use(middlewares);
 
 mockServer.get("/api/crew", (req, res) => {
-  const data = normalize(require("./data.json"));
-  console.log(data);
-  const { crew: { ids, entries }, users } = data;
+  const { crew: { ids, entries }, users } = normalize(require("./data.json"));
   res.json(ids.map(id => ({
     ...entries[id],
     writer: users.entries[entries[id].writer]
   })));
+});
+
+mockServer.get("/api/crew/:idx", ({ params: {idx} }, res) => {
+  const { crew: { entries }, users } = normalize(require("./data.json"));
+  res.json({
+    ...entries[idx],
+    writer: users.entries[entries[idx].writer]
+  });
+});
+
+mockServer.get("/api/users/:idx", ({ params: {idx} }, res) => {
+  const { users: { entries } } = normalize(require("./data.json"));
+  res.json(entries[idx]);
 });
 
 mockServer.use("/api", router);
