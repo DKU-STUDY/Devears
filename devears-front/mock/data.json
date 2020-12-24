@@ -1,9 +1,18 @@
 {
   "crew": [
     {
-      "id": 1,
+      "idx": 1,
       "name": "Crew-01",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua.",
+      "writer": 1
+    }
+  ],
+  "users": [
+    {
+      "idx": 1,
+      "name": "junilhwang",
+      "email": "junil.h@kakao.com",
+      "profileImageUrl": "https://avatars2.githubusercontent.com/u/18749057?s=460&u=014b7feee255469392f5e7cd40a7fcee6442ccf6&v=4"
     }
   ]
 }
