@@ -1,5 +1,8 @@
 import React from "react";
 import {Typography} from "antd";
+import { CrewService } from "../services";
+
+CrewService.getAllCrew().then(console.log);
 
 const { Title } = Typography;
 
