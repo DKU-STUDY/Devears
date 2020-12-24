@@ -2,7 +2,6 @@ import React, {useCallback} from "react";
 import {Link} from "react-router-dom";
 import logo from "assets/image/logo.svg";
 import css from "styled-jsx/css";
-import {UserOutlined} from "@ant-design/icons";
 
 const Header: React.FC = () => {
   const handleLogin = useCallback((e) => {
