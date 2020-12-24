@@ -12,8 +12,8 @@
 
 ## Mock API
 
-- [json-server - 벨로퍼트와 함께하는 모던 리액트](https://react.vlpt.us/redux-middleware/08-json-server.html)
-- [github/json-server](https://github.com/typicode/json-server)
+- [json-mockServer - 벨로퍼트와 함께하는 모던 리액트](https://react.vlpt.us/redux-middleware/08-json-mockServer.html)
+- [github/json-mockServer](https://github.com/typicode/json-mockServer)
 
 ## Proxy
 
