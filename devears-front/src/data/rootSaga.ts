@@ -1,9 +1,11 @@
-import { all } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
+import crewSagas from "./crew/sagas";
 
-// import userSagas from '@/data/users/sagaRegister';
 // import postsSagas from '@/data/posts/sagaRegister';
 // import commentsSagas from '@/data/comments/sagaRegister';
 
 export default function* rootSaga() {
-  yield all([]);
+  yield all([
+    fork(crewSagas)
+  ]);
 }
