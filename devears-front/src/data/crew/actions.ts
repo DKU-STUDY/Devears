@@ -1,13 +1,8 @@
-import { createAction } from 'redux-actions';
+import {createAction} from 'redux-actions';
 import * as actionTypes from "./actionTypes";
 
 export interface GetCrewsAction {
   type: typeof actionTypes.GET_CREWS;
 }
 
-export interface CrewsActions {
-  getCrews: GetCrewsAction;
-  payload: undefined
-}
-
-export const getCrews = createAction(actionTypes.GET_CREWS, () => undefined);
+export const getCrews: () => GetCrewsAction = createAction(actionTypes.GET_CREWS);
