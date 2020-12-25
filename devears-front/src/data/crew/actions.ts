@@ -4,8 +4,8 @@ import {CrewResponse} from "../../domain";
 
 export const getCrews = createAction(actionTypes.GET_CREWS);
 export const getCrewsLoading = createAction(actionTypes.GET_CREWS_LOADING);
-export const getCrewsSuccess = createAction(actionTypes.GET_CREWS_SUCCESS);
-export const getCrewsFailure = createAction(actionTypes.GET_CREWS_FAILURE, (payload: CrewResponse) => payload);
+export const getCrewsSuccess = createAction(actionTypes.GET_CREWS_SUCCESS, (payload: CrewResponse[]) => payload);
+export const getCrewsFailure = createAction(actionTypes.GET_CREWS_FAILURE);
 
 
 export type CrewAction = ReturnType<typeof getCrews> |
