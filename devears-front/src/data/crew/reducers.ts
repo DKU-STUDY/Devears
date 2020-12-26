@@ -51,5 +51,7 @@ export default function crewReducer(state: CrewState = initState, action: CrewAc
           success: action.payload
         }
       }
+    default:
+      return state;
   }
 }
