@@ -7,7 +7,7 @@ export interface UserProfileProps {
 
 const UserProfile: React.FC<UserProfileProps> = ({ name, profileImageUrl }) => {
   return (
-    <a>
+    <a href="#!">
       <figure>
         <img src={profileImageUrl} alt={name} />
       </figure>
