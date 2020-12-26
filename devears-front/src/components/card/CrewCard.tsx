@@ -1,24 +1,26 @@
 import React from "react";
 import css from "styled-jsx/css";
-import UserProfile, {UserProfileProps} from "./UserProfile";
+import UserProfile from "./UserProfile";
+import {CrewResponse} from "../../domain";
+import Conditional from "../../hocs/Conditional";
 
-interface ICrewCardProps {
-  thumbnailUrl: string;
-  title: string;
-  description: string;
-  writer: UserProfileProps;
-}
-
-const CrewCard: React.FC<ICrewCardProps> = ({ thumbnailUrl, title, description, writer }) => {
+const CrewCard: React.FC<CrewResponse> = ({ thumbnailUrl, name, description, writer }: CrewResponse) => {
   return (
     <>
       <article>
-        <figure className="image">
-          <img src={thumbnailUrl} alt={title} />
-        </figure>
-        <h4>{title}</h4>
+        <Conditional condition={thumbnailUrl.length > 0}>
+          <figure className="image">
+            <img src={thumbnailUrl} alt={name} />
+          </figure>
+        </Conditional>
+        <Conditional condition={thumbnailUrl.length === 0}>
+          <div className="none-image" />
+        </Conditional>
+        <h4>{name}</h4>
         <p>{description}</p>
-        <UserProfile {...writer} />
+        <UserProfile
+          name={writer.name}
+          profileImageUrl={writer.profileImageUrl} />
       </article>
       <style jsx>{crewCardStyles}</style>
     </>

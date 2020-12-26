@@ -4,6 +4,7 @@ import { CrewService } from "../services";
 import {useDispatch, useSelector} from "react-redux";
 import selectors from "../data/rootSelectors";
 import actions from "../data/rootActions";
+import CrewCard from "../components/card/CrewCard";
 
 CrewService.getAllCrew().then(console.log);
 
@@ -22,7 +23,7 @@ const Main: React.FC = () => {
       <div className="container">
         <section>
           <Title level={2}>스터디 크루</Title>
-          { crews.length }
+          {crews.map((crew, key) => <CrewCard key={key} {...crew} />)}
         </section>
         <section>
           <Title level={2}>참여 중인 스터디</Title>
