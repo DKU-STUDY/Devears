@@ -18,22 +18,22 @@ const Main: React.FC = () => {
     <main>
       <div className="container">
         <section>
-          <h2 className="title">스터디 크루</h2>
+          <h2 className="title">스터디 <strong>크루</strong></h2>
           <div className="articles">
             {crews.map((crew, key) => <CrewCard key={key} {...crew} />)}
           </div>
         </section>
         <section>
-          <h2 className="title">참여 중인 스터디</h2>
+          <h2 className="title">참여 중인 <strong>스터디</strong></h2>
         </section>
         <section>
-          <h2 className="title">모집 중인 스터디</h2>
+          <h2 className="title">모집 중인 <strong>스터디</strong></h2>
         </section>
         <section>
-          <h2 className="title">진행 중인 스터디</h2>
+          <h2 className="title">진행 중인 <strong>스터디</strong></h2>
         </section>
         <section>
-          <h2 className="title">종료 된 스터디</h2>
+          <h2 className="title">종료 된 <strong>스터디</strong></h2>
         </section>
       </div>
       <style jsx>{mainStyles}</style>
@@ -61,6 +61,11 @@ const mainStyles = css`
     font-weight: 400;
     font-size: 21px;
     margin: 0 0 20px;
+    
+    strong {
+      color: #00529c;
+      font-weight: 400;
+    }
   }
   
   .articles {

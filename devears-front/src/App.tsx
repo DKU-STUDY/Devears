@@ -38,6 +38,7 @@ const globalStyles = css.global`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #f5f5f5;
+    font-size: 15px;
   }
   
   input, textarea, button {
