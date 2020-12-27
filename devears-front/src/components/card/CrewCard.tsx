@@ -3,6 +3,7 @@ import css from "styled-jsx/css";
 import UserProfile from "./UserProfile";
 import {CrewResponse} from "../../domain";
 import Conditional from "../../hocs/Conditional";
+import NoneImage from "./NoneImage";
 
 const CrewCard: React.FC<CrewResponse> = ({ thumbnailUrl, name, description, writer }: CrewResponse) => {
   return (
@@ -14,7 +15,7 @@ const CrewCard: React.FC<CrewResponse> = ({ thumbnailUrl, name, description, wri
           </figure>
         </Conditional>
         <Conditional condition={thumbnailUrl.length === 0}>
-          <div className="none-image" />
+          <NoneImage />
         </Conditional>
         <h4>{name}</h4>
         <p>{description}</p>
@@ -29,13 +30,8 @@ const CrewCard: React.FC<CrewResponse> = ({ thumbnailUrl, name, description, wri
 
 const crewCardStyles = css`
   article {
-    width: calc(25% - 30px);
-    margin: 0 15px;
-  }
-  
-  .none-image {
-    padding-top: 40%;
-    background: #f5f5f5;
+    width: calc(20% - 10px);
+    margin: 0 5px;
   }
 `;
 
