@@ -2,35 +2,35 @@
   "crew": [
     {
       "idx": 1,
-      "name": "Crew-01",
+      "id": "Crew-01",
       "description": "Eveniet quo doloribus sed omnis sapiente corporis, aperiam dolore atque aliquam cumque.",
       "thumbnailUrl":"",
       "writer": 1
     },
     {
       "idx": 2,
-      "name": "Crew-02",
+      "id": "Crew-02",
       "description": "Excepturi aperiam natus nulla facilis nostrum maxime debitis minima ab, quae velit.",
       "thumbnailUrl": "",
       "writer": 1
     },
     {
       "idx": 3,
-      "name": "Crew-03",
+      "id": "Crew-03",
       "description": "Eum dolore iste, excepturi eveniet eaque! Est eligendi alias illo facilis dicta.",
       "thumbnailUrl": "",
       "writer": 1
     },
     {
       "idx": 4,
-      "name": "Crew-04",
+      "id": "Crew-04",
       "description": "Placeat, repellat. Architecto dolorem, mollitia molestiae nostrum quos itaque deserunt eos velit.",
       "thumbnailUrl": "",
       "writer": 1
     },
     {
       "idx": 5,
-      "name": "Crew-05",
+      "id": "Crew-05",
       "description": "sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "thumbnailUrl": "",
       "writer": 1
@@ -39,7 +39,7 @@
   "users": [
     {
       "idx": 1,
-      "name": "junilhwang",
+      "id": "junilhwang",
       "email": "junil.h@kakao.com",
       "profileImageUrl": "https://avatars2.githubusercontent.com/u/18749057?s=460&u=014b7feee255469392f5e7cd40a7fcee6442ccf6&v=4"
     }

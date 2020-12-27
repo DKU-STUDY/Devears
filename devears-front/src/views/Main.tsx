@@ -1,13 +1,10 @@
 import React, {useEffect} from "react";
 import {Typography} from "antd";
-import { CrewService } from "../services";
 import {useDispatch, useSelector} from "react-redux";
 import selectors from "../data/rootSelectors";
 import actions from "../data/rootActions";
 import CrewCard from "../components/card/CrewCard";
 import css from "styled-jsx/css";
-
-CrewService.getAllCrew().then(console.log);
 
 const { Title } = Typography;
 

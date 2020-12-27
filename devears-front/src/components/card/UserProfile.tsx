@@ -1,18 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export interface UserProfileProps {
-  name: string;
+  id: string;
   profileImageUrl: string;
 }
 
-const UserProfile: React.FC<UserProfileProps> = ({ name, profileImageUrl }) => {
+const UserProfile: React.FC<UserProfileProps> = ({ id, profileImageUrl }) => {
+  const userPageLink = `/@${id}`;
+
   return (
-    <a href="#!">
+    <Link to={userPageLink}>
       <figure>
-        <img src={profileImageUrl} alt={name} />
+        <img src={profileImageUrl} alt={id} />
       </figure>
-      <span>{name}</span>
-    </a>
+      <span>{id}</span>
+    </Link>
   )
 }
 

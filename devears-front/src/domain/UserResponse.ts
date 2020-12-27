@@ -1,6 +1,6 @@
 export interface UserResponse {
   idx: number;
-  name: string;
+  id: string;
   email: string;
   profileImageUrl: string;
 }

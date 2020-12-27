@@ -20,7 +20,7 @@ const CrewCard: React.FC<CrewResponse> = ({ thumbnailUrl, name, description, wri
         <h4>{name}</h4>
         <p>{description}</p>
         <UserProfile
-          name={writer.name}
+          id={writer.id}
           profileImageUrl={writer.profileImageUrl} />
       </article>
       <style jsx>{crewCardStyles}</style>
