@@ -1,12 +1,10 @@
 import React, {useEffect} from "react";
-import {Typography} from "antd";
 import {useDispatch, useSelector} from "react-redux";
+import css from "styled-jsx/css";
+
 import selectors from "../data/rootSelectors";
 import actions from "../data/rootActions";
 import CrewCard from "../components/card/CrewCard";
-import css from "styled-jsx/css";
-
-const { Title } = Typography;
 
 const Main: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,22 +18,22 @@ const Main: React.FC = () => {
     <main>
       <div className="container">
         <section>
-          <Title level={2}>스터디 크루</Title>
+          <h2 className="title">스터디 크루</h2>
           <div className="articles">
             {crews.map((crew, key) => <CrewCard key={key} {...crew} />)}
           </div>
         </section>
         <section>
-          <Title level={2}>참여 중인 스터디</Title>
+          <h2 className="title">참여 중인 스터디</h2>
         </section>
         <section>
-          <Title level={2}>모집 중인 스터디</Title>
+          <h2 className="title">모집 중인 스터디</h2>
         </section>
         <section>
-          <Title level={2}>진행 중인 스터디</Title>
+          <h2 className="title">진행 중인 스터디</h2>
         </section>
         <section>
-          <Title level={2}>종료 된 스터디</Title>
+          <h2 className="title">종료 된 스터디</h2>
         </section>
       </div>
       <style jsx>{mainStyles}</style>
@@ -44,6 +42,27 @@ const Main: React.FC = () => {
 }
 
 const mainStyles = css`
+  main {
+    margin: 20px 0;
+  }
+  .container {
+    box-sizing: border-box;
+    padding: 40px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius :3px;
+  }
+
+  section + section {
+    margin-top: 40px;
+  }
+  
+  .title {
+    font-weight: 400;
+    font-size: 21px;
+    margin: 0 0 20px;
+  }
+  
   .articles {
     display: flex;
     flex-flow: nowrap;

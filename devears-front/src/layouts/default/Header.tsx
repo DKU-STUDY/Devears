@@ -32,7 +32,7 @@ const Header: React.FC = () => {
 const headerStyles = css`
   
   header {
-    border-bottom: 1px solid #ddd;
+    box-shadow: 0 -3px 10px #ddd;
     padding: 10px 0;
     background: #fff;
     position: relative;
