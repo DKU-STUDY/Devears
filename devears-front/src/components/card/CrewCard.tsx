@@ -28,6 +28,15 @@ const CrewCard: React.FC<CrewResponse> = ({ thumbnailUrl, name, description, wri
 }
 
 const crewCardStyles = css`
+  article {
+    width: calc(25% - 30px);
+    margin: 0 15px;
+  }
+  
+  .none-image {
+    padding-top: 40%;
+    background: #f5f5f5;
+  }
 `;
 
 export default React.memo(CrewCard);

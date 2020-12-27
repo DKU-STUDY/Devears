@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import selectors from "../data/rootSelectors";
 import actions from "../data/rootActions";
 import CrewCard from "../components/card/CrewCard";
+import css from "styled-jsx/css";
 
 CrewService.getAllCrew().then(console.log);
 
@@ -23,7 +24,9 @@ const Main: React.FC = () => {
       <div className="container">
         <section>
           <Title level={2}>스터디 크루</Title>
-          {crews.map((crew, key) => <CrewCard key={key} {...crew} />)}
+          <div className="articles">
+            {crews.map((crew, key) => <CrewCard key={key} {...crew} />)}
+          </div>
         </section>
         <section>
           <Title level={2}>참여 중인 스터디</Title>
@@ -38,8 +41,16 @@ const Main: React.FC = () => {
           <Title level={2}>종료 된 스터디</Title>
         </section>
       </div>
+      <style jsx>{mainStyles}</style>
     </main>
   )
 }
+
+const mainStyles = css`
+  .articles {
+    display: flex;
+    flex-flow: nowrap;
+  }
+`;
 
 export default React.memo(Main);
