@@ -33,6 +33,27 @@ const crewCardStyles = css`
     width: calc(20% - 10px);
     margin: 0 5px;
   }
+  
+  h4 {
+    font-size: 17px;
+    padding: 0;
+    margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  p {
+    font-size: 14px;
+    line-height: 130%;
+    height: calc(14px * 1.3 * 3);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+  }
 `;
 
 export default React.memo(CrewCard);

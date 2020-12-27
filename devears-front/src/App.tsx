@@ -28,11 +28,23 @@ const globalStyles = css.global`
     padding: 0;
   }
   
-  body {
+  html {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;    
+  }
+  
+  body {
+    font-family: inherit;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  
+  input, textarea, button {
+    font-family: inherit;
+  }
+  
+  strong, h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
   }
   
   ul, li {
