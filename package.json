@@ -1,5 +1,0 @@
-{
-  "devDependencies": {
-    "@types/redux-saga": "^0.10.5"
-  }
-}
