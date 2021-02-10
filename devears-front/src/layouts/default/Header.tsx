@@ -2,8 +2,11 @@ import React, {useCallback} from "react";
 import {Link} from "react-router-dom";
 import logo from "assets/image/logo.svg";
 import css from "styled-jsx/css";
+import { useTranslation } from "react-i18next";
 
 const Header: React.FC = () => {
+  const { t } = useTranslation();
+
   const handleLogin = useCallback((e) => {
     e.preventDefault();
   }, []);
@@ -17,7 +20,7 @@ const Header: React.FC = () => {
             <ul>
               <li>
                 <a href="#!" onClick={handleLogin}>
-                  로그인
+                  { t('user:login') }
                 </a>
               </li>
             </ul>
