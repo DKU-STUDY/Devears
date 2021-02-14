@@ -5,8 +5,10 @@ import css from "styled-jsx/css";
 import selectors from "../data/rootSelectors";
 import actions from "../data/rootActions";
 import CrewCard from "../components/card/CrewCard";
+import { useTranslation } from "react-i18next";
 
 const Main: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const crews = useSelector(selectors.crew.getCrews);
 
@@ -18,7 +20,7 @@ const Main: React.FC = () => {
     <main>
       <div className="container">
         <section>
-          <h2 className="title">스터디 <strong>크루</strong></h2>
+          <h2 className="title">{ t('study:study') } <strong>{ t('common:group') }</strong></h2>
           <div className="articles">
             {crews.map((crew, key) => <CrewCard key={key} {...crew} />)}
           </div>
