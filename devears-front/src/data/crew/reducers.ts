@@ -19,6 +19,19 @@ const initState: CrewState = {
   },
 }
 
+/**
+ * Crew Reducer 설명
+ * saga에서 getCrew를 실행할 때 다음과 같은 action을 사용한다.
+ * 1. 처음에 가져오기 전: GET_CREWS_LOADING
+ * 2. 가져온 후: GET_CREWS_SUCCESS
+ * 3. 실패할 경우: GET_CREWS_FAILURE
+ *
+ * 즉, loading => success or failure 가 되는 것이다.
+ *
+ * 결과 값은 GET_CREWS.success에 저장된다.
+ *
+ * GET_CREWS의 asked, loading, failure에 따라 컴포넌트에서 보여주는 형태를 다르게 해야 한다.
+ */
 export default function crewReducer(state: CrewState = initState, action: CrewAction) {
   switch (action.type) {
     case actionTypes.GET_CREWS_LOADING:
